@@ -21,18 +21,21 @@ const Articles = () => {
   return (
     <section className="Content-Container">
       <h1 className="content-title">Latest Articles:</h1>
-      {articleData.map((content) => {
-        return (
-          <ArticleCard
-            name={content.title}
-            author={content.author}
-            topic={content.topic}
-            commentCount={content.comment_count}
-            createdAt={content.created_at}
-            votes={content.votes}
-          />
-        );
-      })}
+      {articleData &&
+        articleData.map((content) => {
+          return (
+            <ArticleCard
+              name={content.title}
+              author={content.author}
+              topic={content.topic}
+              commentCount={content.comment_count}
+              createdAt={content.created_at}
+              votes={content.votes}
+              articleData={articleData}
+            />
+          );
+        })}
+      }
     </section>
   );
 };
