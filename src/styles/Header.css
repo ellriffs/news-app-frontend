@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+
+Header {
+  text-align: center;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  margin: 0;
+  background-color: #b10f2e;
+  border-bottom: 2px double black;
+  height: 13vh;
+}
+
+.title {
+  text-shadow: 2px 2px 2px black;
+  font-family: 'Fast hand';
+  color: #fdffff;
+  margin: 0;
+  text-align: center;
+  align-content: center;
+}
+
+.dateTime {
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-family: 'Fast hand';
+}

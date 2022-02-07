@@ -1,0 +1,12 @@
+.Article-Container {
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ArticleCard_viewMore {
+  margin: 10px;
+}
