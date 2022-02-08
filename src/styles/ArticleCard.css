@@ -1,12 +1,53 @@
 .Article-Container {
+  line-height: 1.5rem;
   color: white;
   padding: 10px;
-  border-radius: 20px;
   font-size: 1rem;
   display: flex;
   flex-direction: column;
+  background-color: #de7c5a;
+  margin: 10px;
+  width: 100%;
+  border: 2px double white;
 }
 
 .ArticleCard_viewMore {
   margin: 10px;
+}
+
+.top-container,
+.bottom-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 5px;
+}
+.bottom-container,
+.ArticleCard_author,
+.ArticleCard_commentCount,
+.ArticleCard_votes {
+  font-size: 0.7rem;
+  color: brown;
+  text-shadow: 0.5px 0.5px 0.5px black;
+}
+
+.ArticleCard_votes {
+  color: red;
+}
+
+.ArticleCard_name {
+  text-shadow: 2px 2px 2px black;
+  text-align-last: auto;
+  font-size: 0.9rem;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.article-link {
+  text-decoration: none;
+  color: white;
+}
+.ArticleCard_name:hover {
+  color: red;
 }

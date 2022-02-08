@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fasthand&display=swap");
 
 Header {
   text-align: center;
@@ -15,7 +15,7 @@ Header {
 
 .title {
   text-shadow: 2px 2px 2px black;
-  font-family: 'Fast hand';
+  font-family: "Fast hand";
   color: #fdffff;
   margin: 0;
   text-align: center;
@@ -25,5 +25,9 @@ Header {
 .dateTime {
   color: white;
   text-shadow: 2px 2px 2px black;
-  font-family: 'Fast hand';
+  font-family: "Fast hand";
+}
+
+.title-link {
+  text-decoration: none;
 }

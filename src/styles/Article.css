@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fasthand&display=swap");
 
 .Content-Container {
   margin: 10px;
@@ -6,19 +6,52 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-color: #de7c5a;
   height: 100vh;
   overflow: auto;
   border-radius: 32px;
   width: 80vw;
-  border: 4px double white;
   text-align: center;
 }
 
 .content-title {
-  font-family: 'Fast hand';
+  font-family: "Fast hand";
   color: white;
   text-shadow: 2px 2px 2px black;
   font-size: 2rem;
   border-bottom: 5px double white;
+}
+
+.loading {
+  text-transform: uppercase;
+  font-family: "Fast hand";
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  animation-name: pulse;
+  animation-duration: 3s;
+}
+
+.circle {
+  margin: 20px;
+  font-size: 4rem;
+  animation-name: circle;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes circle {
+  0% {
+    text-shadow: 1px 1px 30px blue;
+  }
+  25% {
+    text-shadow: 1px 1px 30px purple;
+  }
+  50% {
+    text-shadow: 1px 1px 30px yellow;
+  }
+  75% {
+    text-shadow: 1px 1px 30px purple;
+  }
+  100% {
+    text-shadow: 1px 1px 30px blue;
+  }
 }
