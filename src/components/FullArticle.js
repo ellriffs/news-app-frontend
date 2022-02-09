@@ -36,8 +36,10 @@ const FullArticle = () => {
     postComment(article_id, inputValue)
       .then((response) => {
         console.log(response);
+        alert("created! 👍");
       })
       .catch((err) => {
+        alert("unsuccessful, please try again!");
         console.log(err);
       });
   };
