@@ -7,13 +7,18 @@ import FullArticle from "./FullArticle";
 
 const Home = () => {
   const [topicsValue, setTopicsValue] = useState("");
+  const [loading, isLoading] = useState(false);
 
   return (
     <div className="Home">
       <Nav setTopicsValue={setTopicsValue} />
-      <Articles topicsValue={topicsValue} />
+      <Articles
+        loading={loading}
+        isLoading={isLoading}
+        topicsValue={topicsValue}
+      />
       <ArticleCard />
-      <FullArticle />
+      <FullArticle loading={loading} isLoading={isLoading} />
     </div>
   );
 };

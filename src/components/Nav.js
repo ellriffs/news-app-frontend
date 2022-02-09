@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import "../styles/Nav.css";
+import { getTopics } from "../utils/api";
 
 const Nav = ({ setTopicsValue }) => {
   const [topicsData, setTopicsData] = useState([]);
 
   useEffect(() => {
-    axios.get("https://ellriffs-api.herokuapp.com/api/topics").then((res) => {
-      setTopicsData(res.data.topics);
+    getTopics().then((topics) => {
+      setTopicsData(topics);
     });
   }, []);
 

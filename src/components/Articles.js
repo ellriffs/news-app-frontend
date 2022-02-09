@@ -1,21 +1,17 @@
 import ArticleCard from "./ArticleCard";
 import "../styles/Article.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getArticles } from "../utils/api";
 
 const Articles = ({ topicsValue }) => {
   const [articleData, setArticleData] = useState([]);
   const [loading, isLoading] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://ellriffs-api.herokuapp.com/api/articles?topic=${topicsValue}`
-      )
-      .then((res) => {
+    getArticles(topicsValue)
+      .then((article) => {
         setTimeout(() => {
-          setArticleData(res.data.articles);
-          console.log(articleData);
+          setArticleData(article);
           isLoading(true);
         }, 2000);
       })

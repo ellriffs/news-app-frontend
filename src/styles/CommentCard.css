@@ -1,0 +1,12 @@
+.comment-list {
+  width: 90vw;
+  height: fit-content;
+  font-size: 0.7rem;
+  border: 2px solid black;
+  list-style: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 32px;
+  background-color: white;
+}

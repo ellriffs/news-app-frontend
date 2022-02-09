@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Header from "./Header";
 import FullArticle from "./FullArticle";
-import Articles from "./Articles";
 
 function App() {
   return (
