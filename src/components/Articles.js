@@ -38,6 +38,7 @@ const Articles = ({ topicsValue }) => {
           articleData.map((content) => {
             return (
               <ArticleCard
+                key={content.article_id}
                 id={content.article_id}
                 name={content.title}
                 author={content.author}

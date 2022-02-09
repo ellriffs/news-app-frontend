@@ -22,7 +22,7 @@ const Nav = ({ setTopicsValue }) => {
         {topicsData.map((topics, index) => {
           return (
             <>
-              <option key={index}>{topics.slug}</option>
+              <option key={topics.description}>{topics.slug}</option>
             </>
           );
         })}
