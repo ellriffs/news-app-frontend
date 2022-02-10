@@ -2,7 +2,11 @@ import "../styles/fullArticle.css";
 import CommentCard from "./CommentCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getComment, getSingleArticle, postComment } from "../utils/api";
+import {
+  getComment,
+  getSingleArticle,
+  postComment,
+} from "../utils/api";
 
 const FullArticle = () => {
   const { article_id } = useParams();
@@ -10,10 +14,15 @@ const FullArticle = () => {
   const [fullArticleData, setFullArticleData] = useState([]);
   const [commentData, setCommentData] = useState([]);
   const [loading, isLoading] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const [inputValue, setInputValue] = useState({
     username: "",
     body: "",
   });
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
 
   const handleInputValue = (event) => {
     setInputValue((currValue) => {
@@ -34,6 +43,7 @@ const FullArticle = () => {
       .then((response) => {
         console.log(response);
         alert("created! 👍");
+        window.location.reload();
       })
       .catch((err) => {
         alert("unsuccessful, please try again!");
@@ -109,22 +119,34 @@ const FullArticle = () => {
             <button type="submit">Submit</button>
           </form>
           <div className="comment-container">
-            <ul>
-              <h3 className>Comments ({commentData.length})</h3>
-              {commentData.map((comments) => {
-                return (
-                  <CommentCard
-                    key={comments.comment_id}
-                    body={comments.body}
-                    author={comments.author}
-                    createdAt={comments.created_at}
-                    votes={comments.votes}
-                    comment_id={comments.comment_id}
-                    article_id={article_id}
-                  />
-                );
-              })}
-            </ul>
+            <h3 onClick={handleClick} className="comments_title">
+              💬 Comments ({commentData.length})
+            </h3>
+            {isClicked ? (
+              <ul>
+                {commentData.map((comments) => {
+                  return (
+                    <CommentCard
+                      key={comments.comment_id}
+                      body={comments.body}
+                      author={comments.author}
+                      createdAt={comments.created_at}
+                      votes={comments.votes}
+                      comment_id={comments.comment_id}
+                      article_id={article_id}
+                    />
+                  );
+                })}
+              </ul>
+            ) : (
+              <>
+                <p className="show-more" onClick={handleClick}>
+                  {" "}
+                  Click to show
+                </p>
+                <div className="temp-comment-div"></div>
+              </>
+            )}
           </div>
         </article>
       )}

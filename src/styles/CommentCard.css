@@ -1,17 +1,22 @@
 .comment-list {
+  background-color: #de7c5a;
   width: 90vw;
-  height: fit-content;
   font-size: 0.7rem;
   border: 2px solid black;
   list-style: none;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 10px;
-  border-radius: 32px;
-  background-color: white;
+  color: white;
+  text-shadow: 2px 1px 2px black;
 }
 
 .CommentCard_attributes {
+  border-radius: 32px;
+  background-color: #570000;
+  color: white;
+  text-shadow: 1px 1px 1px wheat;
+  text-shadow: 0.5px 0.5px 0.5px black;
   font-size: 0.6rem;
   width: 100%;
   display: flex;
@@ -28,13 +33,16 @@
 }
 
 .CommentCard_posted {
+  text-align: center;
+  width: 100%;
+  border-radius: 32px;
+  background-color: #570000;
   font-size: 0.6rem;
   margin: 5px;
 }
 
-.delete-Comment {
-  font-size: 0.6rem;
+.delete-comment {
   margin: 5px;
-  width: fit-content;
+  font-size: 0.6rem;
   border-radius: 32px;
 }

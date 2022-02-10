@@ -9,6 +9,7 @@ const CommentCard = ({ comment_id, body, author, createdAt, votes }) => {
       .then((res) => {
         alert("Comment Deleted Successfully 🎉 ");
         console.log(res);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -29,7 +30,7 @@ const CommentCard = ({ comment_id, body, author, createdAt, votes }) => {
         <li className="CommentCard_posted">
           Posted: {moment(createdAt).format("MMMM Do YYYY, h:mm:ss a")}
         </li>
-        <button>Delete Comment</button>
+        <button className="delete-comment">Delete Comment</button>
       </ul>
     </form>
   );

@@ -46,3 +46,9 @@ export const patchVotes = (article_id, voteCount) => {
     return res.data.article;
   });
 };
+
+export const patchCommentVotes = (comment_id, voteCount) => {
+  return API.patch(`/comments/${comment_id}`, voteCount).then((res) => {
+    return res.data.article;
+  });
+};

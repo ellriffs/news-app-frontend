@@ -15,8 +15,20 @@ const ArticleCard = ({
   thumb,
   article_id,
 }) => {
-  {
-  }
+  const [voteCount, setVoteCount] = useState({ inc_votes: 1 });
+
+  const handleVoteCount = (event) => {
+    event.preventDefault();
+    patchVotes(article_id, voteCount)
+      .then((res) => {
+        setVoteCount((voteCount.votes = voteCount.inc_votes += 1));
+
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <section className="Article-Container">
       {articleData && (
@@ -32,7 +44,7 @@ const ArticleCard = ({
                 Comments: ({commentCount})
               </div>
               <div className="ArticleCard_votes">{votes} Votes</div>
-              <div onClick className="ArticleCard_thumb">
+              <div onClick={handleVoteCount} className="ArticleCard_thumb">
                 {thumb}
               </div>
             </div>
