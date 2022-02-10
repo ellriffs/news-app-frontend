@@ -1,5 +1,7 @@
 import "../styles/ArticleCard.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { patchVotes } from "../utils/api";
 import moment from "moment";
 
 const ArticleCard = ({
@@ -11,20 +13,28 @@ const ArticleCard = ({
   createdAt,
   votes,
   thumb,
-  id,
+  article_id,
 }) => {
+  {
+  }
   return (
     <section className="Article-Container">
       {articleData && (
         <>
-          <Link key={`${id}`} className="article-link" to={`/article/${id}`}>
+          <Link
+            key={`${article_id}`}
+            className="article-link"
+            to={`/article/${article_id}`}
+          >
             <div className="top-container">
               <div className="ArticleCard_author">Author: {author}</div>
               <div className="ArticleCard_commentCount">
                 Comments: ({commentCount})
               </div>
               <div className="ArticleCard_votes">{votes} Votes</div>
-              <div className="ArticleCard_thumb">{thumb}</div>
+              <div onClick className="ArticleCard_thumb">
+                {thumb}
+              </div>
             </div>
             <div className="ArticleCard_name">{name}</div>
 

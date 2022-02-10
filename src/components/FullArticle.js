@@ -11,11 +11,8 @@ const FullArticle = () => {
   const [commentData, setCommentData] = useState([]);
   const [loading, isLoading] = useState(false);
   const [inputValue, setInputValue] = useState({
-    article_id: `${article_id}`,
-    author: "",
+    username: "",
     body: "",
-    created_at: Date(),
-    votes: 0,
   });
 
   const handleInputValue = (event) => {
@@ -23,8 +20,8 @@ const FullArticle = () => {
       const newInput = { ...currValue };
       if (event.target.className === "body_input") {
         newInput.body = event.target.value;
-      } else if (event.target.className === "author_input") {
-        newInput.author = event.target.value;
+      } else if (event.target.className === "username_input") {
+        newInput.username = event.target.value;
       }
       return newInput;
     });
@@ -73,10 +70,10 @@ const FullArticle = () => {
   return (
     <>
       {!loading && fullArticleData ? (
-        <>
+        <div className=" loading-container">
           <h1 className="loading">Loading...</h1>
           <div className="circle">🌎</div>
-        </>
+        </div>
       ) : (
         <article>
           <div className="full-article-container">
@@ -94,25 +91,26 @@ const FullArticle = () => {
             <div className="FullArticle_title">{fullArticleData.title}</div>
             <div className="FullArticle_body">{fullArticleData.body}</div>
           </div>
+          <form className="comment-form" onSubmit={handleSubmit}>
+            <input
+              required
+              onChange={handleInputValue}
+              className="username_input"
+              type="text"
+              placeholder="add name here"
+            ></input>
+            <input
+              required
+              onChange={handleInputValue}
+              className="body_input"
+              type="text"
+              placeholder="add comment here"
+            ></input>
+            <button type="submit">Submit</button>
+          </form>
           <div className="comment-container">
-            <form onSubmit={handleSubmit}>
-              <input
-                required
-                onChange={handleInputValue}
-                className="author_input"
-                type="text"
-                placeholder="add name here"
-              ></input>
-              <input
-                required
-                onChange={handleInputValue}
-                className="body_input"
-                type="text"
-                placeholder="add comment here"
-              ></input>
-              <button>Submit</button>
-            </form>
             <ul>
+              <h3 className>Comments ({commentData.length})</h3>
               {commentData.map((comments) => {
                 return (
                   <CommentCard
@@ -121,6 +119,8 @@ const FullArticle = () => {
                     author={comments.author}
                     createdAt={comments.created_at}
                     votes={comments.votes}
+                    comment_id={comments.comment_id}
+                    article_id={article_id}
                   />
                 );
               })}

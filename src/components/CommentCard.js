@@ -1,16 +1,37 @@
 import "../styles/CommentCard.css";
+import { deleteComment } from "../utils/api";
 import moment from "moment";
 
-const CommentCard = ({ body, author, createdAt, votes }) => {
+const CommentCard = ({ comment_id, body, author, createdAt, votes }) => {
+  const handleDelete = (event) => {
+    event.preventDefault();
+    deleteComment(comment_id)
+      .then((res) => {
+        alert("Comment Deleted Successfully 🎉 ");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Cannot Delete. Please Try again");
+      });
+  };
+
   return (
-    <div>
+    <form onSubmit={handleDelete}>
       <ul className=" comment-list">
-        <li>{author}</li>
-        <li>{body}</li>
-        <li>{moment(createdAt).format("MMMM Do YYYY, h:mm:ss a")}</li>
-        <li>{votes}</li>
+        <div className="CommentCard_attributes">
+          <li className="CommentCard_author">Author: {author}</li>
+          <li className="CommentCard_votes">Votes {votes}</li>
+          <li className="CommentCard_voteUp">⬆</li>
+          <li className="CommentCard_voteDown">⬇</li>
+        </div>
+        <li className="CommentCard_body">{body}</li>
+        <li className="CommentCard_posted">
+          Posted: {moment(createdAt).format("MMMM Do YYYY, h:mm:ss a")}
+        </li>
+        <button>Delete Comment</button>
       </ul>
-    </div>
+    </form>
   );
 };
 

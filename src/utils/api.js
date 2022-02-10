@@ -30,7 +30,19 @@ export const getComment = (article_id) => {
 export const postComment = (article_id, inputValue) => {
   return API.post(`/articles/${article_id}/comments`, inputValue).then(
     (res) => {
-      return res.data.comment;
+      return res.data.newComment;
     }
   );
+};
+
+export const deleteComment = (comment_id) => {
+  return API.delete(`/comments/${comment_id}`).then((res) => {
+    return res.data;
+  });
+};
+
+export const patchVotes = (article_id, voteCount) => {
+  return API.patch(`/articles/${article_id}`, voteCount).then((res) => {
+    return res.data.article;
+  });
 };

@@ -16,14 +16,35 @@ ul {
   justify-content: center;
 }
 
-.comment-box {
-  width: 80%;
-  height: 10vh;
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80vw;
+  margin: 20px;
+}
+
+.body_input {
+  height: 8vh;
+  margin: 5px;
+  font-size: 1rem;
+  text-align: center;
+}
+.username_input {
   margin: 5px;
   font-size: 1rem;
   text-align: center;
 }
 
+.username_input,
+.body_input {
+  background: transparent;
+  border-radius: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: white;
+}
 .comment-container {
   display: flex;
   flex-direction: column;
@@ -31,7 +52,6 @@ ul {
   justify-content: center;
   align-items: center;
   overflow: auto;
-  height: fit-content;
 }
 
 .attributes-block {
@@ -88,6 +108,14 @@ ul {
   height: fit-content;
 }
 
+.loading-container {
+  height: 100vh;
+  background-color: #b10f2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
 .loading {
   text-transform: uppercase;
   font-family: "Fast hand";

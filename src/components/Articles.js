@@ -20,6 +20,8 @@ const Articles = ({ topicsValue }) => {
       });
   }, [topicsValue]);
 
+  console.log(articleData);
+
   return (
     <>
       <h1 className="content-title">Latest Articles:</h1>
@@ -35,7 +37,7 @@ const Articles = ({ topicsValue }) => {
             return (
               <ArticleCard
                 key={content.article_id}
-                id={content.article_id}
+                article_id={content.article_id}
                 name={content.title}
                 author={content.author}
                 topic={content.topic}
