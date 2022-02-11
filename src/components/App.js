@@ -11,6 +11,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/articles" element={<Home />} />
+        <Route path="/articles?topic=:topic_slug" element={<Home />} />
         <Route path="/article/:article_id" element={<FullArticle />} />
       </Routes>
     </BrowserRouter>

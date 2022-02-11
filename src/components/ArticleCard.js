@@ -19,9 +19,18 @@ const ArticleCard = ({
 
   const handleVoteCount = (event) => {
     event.preventDefault();
-    patchVotes(article_id, voteCount)
+    const newVote = { ...voteCount };
+    console.log(newVote);
+    patchVotes(article_id, newVote)
       .then((res) => {
-        setVoteCount((voteCount.votes = voteCount.inc_votes += 1));
+        if (newVote.votes === null || isNaN(newVote)) {
+          newVote.votes = 1;
+        }
+
+        setVoteCount(newVote.votes++);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
 
         console.log(res);
       })

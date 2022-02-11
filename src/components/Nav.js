@@ -1,31 +1,57 @@
-import { useState, useEffect } from "react";
-import "../styles/Nav.css";
 import { getTopics } from "../utils/api";
+import { Link } from "react-router-dom";
 
-const Nav = ({ setTopicsValue }) => {
-  const [topicsData, setTopicsData] = useState([]);
+import { useEffect, useState } from "react";
+import "../styles/Nav.css";
+
+const Nav = ({ setTopicsValue, setSortValue, topicsValue }) => {
+  const [topicValueData, setTopicValueData] = useState([]);
+  const [clicked, handleClicked] = useState(false);
 
   useEffect(() => {
-    getTopics().then((topics) => {
-      setTopicsData(topics);
-    });
+    getTopics()
+      .then((topicValue) => {
+        setTopicValueData(topicValue);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
+  const handleSort = (e) => {
+    setSortValue(e.target.value);
+  };
 
   const handleTopics = (e) => {
     setTopicsValue(e.target.value);
+    console.log(topicsValue);
   };
 
   return (
     <nav className="nav-container">
-      <h3>Filter By Topic</h3>
-      <select onChange={handleTopics} className="Nav-select">
-        {topicsData.map((topics, index) => {
-          return (
-            <>
-              <option key={topics.description}>{topics.slug}</option>
-            </>
-          );
-        })}
+      <Link className="categories_all-link" to={`/articles`}>
+        <h3 className="categories_All" onChange={handleTopics}>
+          All
+        </h3>
+      </Link>
+      {topicValueData.map((topic) => {
+        return (
+          <Link
+            className="categories-link"
+            to={`/articles?topic=${topic.slug}`}
+          >
+            <h3 className="categories" onChange={handleTopics}>
+              {topic.slug}
+            </h3>
+          </Link>
+        );
+      })}
+
+      <h3 className="sort_by-title">Sort By</h3>
+      <select onChange={handleSort} className="sort_by-container">
+        <option value="votes">Votes</option>
+        <option value="created_at">Date</option>
+        <option value="comment_count">comments</option>
       </select>
     </nav>
   );

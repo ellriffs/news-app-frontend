@@ -5,7 +5,7 @@ import "../styles/Header.css";
 const Header = () => {
   return (
     <header>
-      <Link className="title-link" to="/">
+      <Link className="title-link" to="/articles">
         <h1 className="title"> 🌎 NEWS TODAY 🌎</h1>
       </Link>
 

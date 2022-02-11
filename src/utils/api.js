@@ -8,12 +8,28 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topicsValue) => {
-  const ifTopics = topicsValue ? `/articles?topic=${topicsValue}` : "/articles";
-  return API.get(ifTopics).then((res) => {
+export const getArticles = (sort_value) => {
+  const isSorted = sort_value ? `/articles?sort_by=${sort_value}` : `/articles`;
+  return API.get(isSorted).then((res) => {
+    console.log(res.data.articles);
     return res.data.articles;
   });
 };
+
+export const getArticlesViaTopics = (topic) => {
+  const hasTopic = `/articles?topic=${topic}`;
+  return API.get(hasTopic).then((res) => {
+    console.log(res.data.articles);
+    return res.data.articles;
+  });
+};
+
+// export const sortArticles = (sort_by) => {
+//   const isSorted = `/articles?sort_by=${sort_by}`;
+//   return API.get(isSorted).then((res) => {
+//     return res.data.articles;
+//   });
+// };
 
 export const getSingleArticle = (article_id) => {
   return API.get(`/articles/${article_id}`).then((res) => {
@@ -49,6 +65,6 @@ export const patchVotes = (article_id, voteCount) => {
 
 export const patchCommentVotes = (comment_id, voteCount) => {
   return API.patch(`/comments/${comment_id}`, voteCount).then((res) => {
-    return res.data.article;
+    return res.data.comment;
   });
 };

@@ -1,30 +1,43 @@
 import ArticleCard from "./ArticleCard";
 import "../styles/Article.css";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getArticles } from "../utils/api";
+import { getArticles, getArticlesViaTopics, getTopics } from "../utils/api";
 
-const Articles = ({ topicsValue }) => {
+const Articles = ({ sortValue }) => {
   const [articleData, setArticleData] = useState([]);
   const [loading, isLoading] = useState(false);
+  const { search } = useLocation();
+  const queryParams = search.split("=")[1];
 
   useEffect(() => {
-    getArticles(topicsValue)
-      .then((article) => {
+    if (queryParams) {
+      getArticlesViaTopics(queryParams).then((articles) => {
         setTimeout(() => {
-          setArticleData(article);
+          setArticleData(articles);
           isLoading(true);
-        }, 2000);
-      })
-      .catch((err) => {
-        console.log(err);
+        }, 1000);
       });
-  }, [topicsValue]);
+    } else {
+      getArticles(sortValue)
+        .then((article) => {
+          setTimeout(() => {
+            setArticleData(article);
+            isLoading(true);
+          }, 1000);
+        })
 
-  console.log(articleData);
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [sortValue, queryParams]);
+
+  console.log(sortValue);
 
   return (
     <>
-      <h1 className="content-title">Latest Articles:</h1>
+      <h1 className="content-title">All Articles:</h1>
       <section className="Content-Container">
         {!loading ? (
           <>

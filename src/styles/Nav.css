@@ -12,6 +12,52 @@
 
 .Nav-select {
   text-align: center;
-  width: 30vw;
+  width: fit-content;
   text-transform: uppercase;
+}
+
+.sort_by-title {
+  font-size: 0.7rem;
+}
+
+.filter_by-title {
+  font-size: 0.7rem;
+}
+
+.sort_by-container {
+  text-transform: uppercase;
+  text-align: center;
+  width: fit-content;
+}
+
+.categories-link,
+.categories_all-link {
+  text-decoration: none;
+  color: white;
+  font-size: 0.7rem;
+}
+
+.categories-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  top: 82px;
+  width: 50%;
+  left: -10%;
+
+  background-color: #570000;
+}
+
+.dropdown-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  width: 22vw;
 }
