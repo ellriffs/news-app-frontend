@@ -6,7 +6,6 @@ import "../styles/Nav.css";
 
 const Nav = ({ setTopicsValue, setSortValue, topicsValue }) => {
   const [topicValueData, setTopicValueData] = useState([]);
-  const [clicked, handleClicked] = useState(false);
 
   useEffect(() => {
     getTopics()
@@ -37,6 +36,7 @@ const Nav = ({ setTopicsValue, setSortValue, topicsValue }) => {
       {topicValueData.map((topic) => {
         return (
           <Link
+            key={topic.slug}
             className="categories-link"
             to={`/articles?topic=${topic.slug}`}
           >
@@ -51,7 +51,7 @@ const Nav = ({ setTopicsValue, setSortValue, topicsValue }) => {
       <select onChange={handleSort} className="sort_by-container">
         <option value="votes">Votes</option>
         <option value="created_at">Date</option>
-        <option value="comment_count">comments</option>
+        <option value="comment_count">Comments</option>
       </select>
     </nav>
   );

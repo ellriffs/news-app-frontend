@@ -2,7 +2,7 @@ import ArticleCard from "./ArticleCard";
 import "../styles/Article.css";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getArticles, getArticlesViaTopics, getTopics } from "../utils/api";
+import { getArticles, getArticlesViaTopics } from "../utils/api";
 
 const Articles = ({ sortValue }) => {
   const [articleData, setArticleData] = useState([]);
@@ -12,9 +12,9 @@ const Articles = ({ sortValue }) => {
 
   useEffect(() => {
     if (queryParams) {
-      getArticlesViaTopics(queryParams).then((articles) => {
+      getArticlesViaTopics(queryParams, sortValue).then((articles) => {
         setTimeout(() => {
-          setArticleData(articles);
+          setArticleData(articles, sortValue);
           isLoading(true);
         }, 1000);
       });
@@ -37,7 +37,13 @@ const Articles = ({ sortValue }) => {
 
   return (
     <>
-      <h1 className="content-title">All Articles:</h1>
+      {!queryParams ? (
+        <h1 className="content-title">All Articles:</h1>
+      ) : (
+        <h1 className="content-title">
+          {queryParams[0].toUpperCase() + queryParams.slice(1)}:
+        </h1>
+      )}
       <section className="Content-Container">
         {!loading ? (
           <>

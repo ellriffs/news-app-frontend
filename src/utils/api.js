@@ -11,25 +11,20 @@ export const getTopics = () => {
 export const getArticles = (sort_value) => {
   const isSorted = sort_value ? `/articles?sort_by=${sort_value}` : `/articles`;
   return API.get(isSorted).then((res) => {
-    console.log(res.data.articles);
     return res.data.articles;
   });
 };
 
-export const getArticlesViaTopics = (topic) => {
-  const hasTopic = `/articles?topic=${topic}`;
+export const getArticlesViaTopics = (topic, sortValue) => {
+  const hasTopic =
+    topic && sortValue
+      ? `/articles?topic=${topic}&sort_by=${sortValue}`
+      : `/articles?topic=${topic}`;
+
   return API.get(hasTopic).then((res) => {
-    console.log(res.data.articles);
     return res.data.articles;
   });
 };
-
-// export const sortArticles = (sort_by) => {
-//   const isSorted = `/articles?sort_by=${sort_by}`;
-//   return API.get(isSorted).then((res) => {
-//     return res.data.articles;
-//   });
-// };
 
 export const getSingleArticle = (article_id) => {
   return API.get(`/articles/${article_id}`).then((res) => {
